@@ -20,6 +20,10 @@ public class Abrigo {
         return nome;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getTelefone() {
         return telefone;
     }

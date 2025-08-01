@@ -2,7 +2,9 @@ package br.com.alura.service;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,6 +27,13 @@ public class AbrigoService {
         String responseBody = response.body();
         Abrigo[] abrigos = new ObjectMapper().readValue(responseBody, Abrigo[].class);
         List<Abrigo> abrigoList = Arrays.stream(abrigos).toList();
+        if(abrigoList.isEmpty())
+            System.out.println("Não há abrigos cadastrados!");
+        else
+            mostrarAbrigos(abrigoList);
+    }
+
+    private void mostrarAbrigos(List<Abrigo> abrigoList) {
         System.out.println("Abrigos cadastrados:");
         for (Abrigo abrigo : abrigoList) {
             long id = abrigo.getId();
